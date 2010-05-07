@@ -1,0 +1,36 @@
+<h1>Listing artworks</h1>
+
+<table>
+  <tr>
+    <th>Image</th>
+    <th>Title</th>
+    <th>Description</th>
+    <th>Upload date</th>
+    <th>For sale</th>
+    <th>Nsfw</th>
+    <th>Price</th>
+    <th>Quantity</th>
+    <th>Votes</th>
+  </tr>
+
+<% @artworks.each do |artwork| %>
+  <tr>
+    <td><img src="<%=h artwork.image_url %>" height='100' width='100' /></td>
+    <td><%=h artwork.title %></td>
+    <td><%= artwork.description %></td>
+    <td><%=h artwork.upload_date %></td>
+    <td><%=h artwork.for_sale %></td>
+    <td><%=h artwork.nsfw %></td>
+    <td><%=h artwork.price %></td>
+    <td><%=h artwork.quantity %></td>
+    <td><%=h artwork.votes %></td>
+    <td><%= link_to 'Show', artwork %></td>
+    <td><%= link_to 'Edit', edit_artwork_path(artwork) %></td>
+    <td><%= link_to 'Destroy', artwork, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New artwork', new_artwork_path %>

@@ -1,0 +1,47 @@
+<h1>New artwork</h1>
+
+<% form_for(@artwork) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.label :image_url %><br />
+    <%= f.text_field :image_url %>
+  </p>
+  <p>
+    <%= f.label :description %><br />
+    <%= f.text_area :description %>
+  </p>
+  <p>
+    <%= f.label :upload_date %><br />
+    <%= f.datetime_select :upload_date %>
+  </p>
+  <p>
+    <%= f.label :for_sale %><br />
+    <%= f.check_box :for_sale %>
+  </p>
+  <p>
+    <%= f.label :nsfw %><br />
+    <%= f.check_box :nsfw %>
+  </p>
+  <p>
+    <%= f.label :price %><br />
+    <%= f.text_field :price %>
+  </p>
+  <p>
+    <%= f.label :quantity %><br />
+    <%= f.text_field :quantity %>
+  </p>
+  <p>
+    <%= f.label :votes %><br />
+    <%= f.text_field :votes %>
+  </p>
+  <p>
+    <%= f.submit 'Create' %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', artworks_path %>

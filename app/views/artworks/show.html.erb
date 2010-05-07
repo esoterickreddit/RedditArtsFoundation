@@ -1,0 +1,48 @@
+<p>
+  <b>Title:</b>
+  <%=h @artwork.title %>
+</p>
+
+<p>
+  <b>Image url:</b>
+  <%=h @artwork.image_url %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%=h @artwork.description %>
+</p>
+
+<p>
+  <b>Upload date:</b>
+  <%=h @artwork.upload_date %>
+</p>
+
+<p>
+  <b>For sale:</b>
+  <%=h @artwork.for_sale %>
+</p>
+
+<p>
+  <b>Nsfw:</b>
+  <%=h @artwork.nsfw %>
+</p>
+
+<p>
+  <b>Price:</b>
+  <%=h @artwork.price %>
+</p>
+
+<p>
+  <b>Quantity:</b>
+  <%=h @artwork.quantity %>
+</p>
+
+<p>
+  <b>Votes:</b>
+  <%=h @artwork.votes %>
+</p>
+
+
+<%= link_to 'Edit', edit_artwork_path(@artwork) %> |
+<%= link_to 'Back', artworks_path %>

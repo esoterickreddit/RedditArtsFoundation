@@ -1,0 +1,21 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  title: MyString
+  description: MyText
+  upload_date: 2010-05-06 22:36:08
+  for_sale: false
+  nsfw: false
+  price: 9.99
+  quantity: 
+  votes: 
+
+two:
+  title: MyString
+  description: MyText
+  upload_date: 2010-05-06 22:36:08
+  for_sale: false
+  nsfw: false
+  price: 9.99
+  quantity: 
+  votes: 
