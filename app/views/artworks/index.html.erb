@@ -1,5 +1,9 @@
 <h1>Listing artworks</h1>
 
+<div id="search">
+  <%= render :partial => 'search' %>
+</div>
+
 <table>
   <tr>
     <th>Image</th>
@@ -30,9 +34,6 @@
 </table>
 
 <br />
-
 <%= will_paginate @artworks -%>
-
 <br />
-
 <%= link_to 'New artwork', new_artwork_path %>
