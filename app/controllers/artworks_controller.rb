@@ -2,8 +2,9 @@ class ArtworksController < ApplicationController
   # GET /artworks
   # GET /artworks.xml
   def index
-    @artworks = Artwork.all
-
+    #@artworks = Artwork.all
+    @artworks = Artwork.find_new_artwork.paginate :page => params[:page], :per_page => 8, :order => 'created_at DESC'
+    
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @artworks }
@@ -81,5 +82,9 @@ class ArtworksController < ApplicationController
       format.html { redirect_to(artworks_url) }
       format.xml  { head :ok }
     end
+  end
+  
+  def search
+    @artwork = Artwork.search params[:search]
   end
 end

@@ -5,7 +5,6 @@
     <th>Image</th>
     <th>Title</th>
     <th>Description</th>
-    <th>Upload date</th>
     <th>For sale</th>
     <th>Nsfw</th>
     <th>Price</th>
@@ -18,7 +17,6 @@
     <td><img src="<%=h artwork.image_url %>" height='100' width='100' /></td>
     <td><%=h artwork.title %></td>
     <td><%= artwork.description %></td>
-    <td><%=h artwork.upload_date %></td>
     <td><%=h artwork.for_sale %></td>
     <td><%=h artwork.nsfw %></td>
     <td><%=h artwork.price %></td>
@@ -30,6 +28,10 @@
   </tr>
 <% end %>
 </table>
+
+<br />
+
+<%= will_paginate @artworks -%>
 
 <br />
 
