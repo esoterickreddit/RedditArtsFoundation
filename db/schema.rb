@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100507220403) do
+ActiveRecord::Schema.define(:version => 20100514204421) do
 
   create_table "artworks", :force => true do |t|
     t.string   "title",                                     :default => "Untitled Artwork"
@@ -21,6 +21,21 @@ ActiveRecord::Schema.define(:version => 20100507220403) do
     t.integer  "quantity"
     t.integer  "null"
     t.integer  "votes",                                     :default => 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "users", :force => true do |t|
+    t.string   "username"
+    t.string   "password_salt"
+    t.string   "password_hash"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "avatar"
+    t.date     "date_of_birth"
+    t.boolean  "commission"
+    t.boolean  "collaboration"
+    t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
