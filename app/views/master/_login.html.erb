@@ -1,0 +1,11 @@
+<% if session[:user].nil? %>
+  <% form_for :user, @user, :url => { :action => "signin", :controller => "user" } do %>
+    <label for="username">Username:</label>
+    <%= text_field_tag "username" %><br />
+    <label for="password">Password:</label>
+    <%= password_field_tag "password" %><br />
+    <%= submit_tag "Sign in" %>
+  <% end %>
+<% else %>
+  Hello, <%= user = User.find(:first, :conditions => [ "id = ?", session[:user] ]).first_name %> <%= link_to "Logout", :action => "signout", :controller => "user" %>
+<% end %>

@@ -1,0 +1,12 @@
+<h1>Whats New</h1>
+<% for artwork in @artworks %>
+  <div class="entry">
+    <%= link_to image_tag(artwork.image_url, :size => "100x100"), :controller => "artworks", :action => "show", :id => artwork.id %>
+    <h3><%= artwork.title %></h3>
+    <%= artwork.description %>
+    <div class="price_container">Price: <span class="price"><%= artwork.price %></span></div>
+    <div class="votes_container">Votes: <span class="votes"><%= artwork.votes %></span></div>
+    <div class="posted_container">Posted on: <span class="posted"><%= artwork.created_at %></span></div>
+  </div>
+<% end %>
+<%= will_paginate @artworks -%>
