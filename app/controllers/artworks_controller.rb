@@ -1,5 +1,7 @@
 class ArtworksController < ApplicationController
-  # GET /artworks
+  before_filter :check_authentication, :except => [:show, :index, :search]
+
+# GET /artworks
   # GET /artworks.xml
   def index
     #@artworks = Artwork.all

@@ -1,26 +1,15 @@
 class BrowseController < ApplicationController
-  before_filter :check_authentication, :except => [:show, :index, :signin_from, :signin]
+  before_filter :check_authentication, :except => [:show, :index, :signin_from, :signin, :hot, :new]
 
-  def check_authentication
-    unless session[:user]
-      session[:intended_action] = action_name
-      flash[:notice] = "Please signin"
-      redirect_to :action => "index"
-    end
-  end
-
-  def signin
-    session[:user] = User.authenticate(params[:username], params[:password]).id
-    #redirect_to :action => session[:intended_action]
-    redirect_to :action => "index"
-  end
-
-  def signout
-    session[:user] = nil
-    redirect_to :action => :index
+  def new
+    @artworks = Artwork.find_new_artwork.paginate :page => params[:page], :per_page => 8
   end
 
   def index
-    @artworks = Artwork.find_new_artwork.paginate :page => params[:page], :per_page => 8, :order => 'created_at DESC'
+    redirect_to :action => "new"
+  end
+
+  def hot
+    @artworks = Artwork.find_hot_artwork.paginate :page => params[:page], :per_page => 8
   end
 end

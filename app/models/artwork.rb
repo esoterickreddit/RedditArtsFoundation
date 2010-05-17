@@ -10,6 +10,10 @@ class Artwork < ActiveRecord::Base
   end
   
   def self.find_new_artwork
-    find(:all, :order => "created_at")
+    find(:all, :order => "created_at DESC")
+  end
+
+  def self.find_hot_artwork
+    find(:all, :order => "votes DESC")
   end
 end

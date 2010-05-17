@@ -1,8 +1,0 @@
-<h1>Search</h1>
-<%= render :partal => 'search_results' %>
-
-<hr />
-<% @artwork.each do |artwork| %>
-  <li><%= link_to artwork.title, :action => 'show', :id => artwork.id %></li>
-<% end %>
-<hr />

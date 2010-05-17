@@ -6,9 +6,9 @@
   <%= stylesheet_link_tag 'scaffold', 'style' %>
 </head>
 <body>
-<%= render :partial => "header" %>
+<%= render :partial => "master/header" %>
 <div class="flash"><%= flash[:notice] %></div>
 <%= yield %>
-<%= render :partial => "footer" %>
+<%= render :partial => "master/footer" %>
 </body>
 </html>
