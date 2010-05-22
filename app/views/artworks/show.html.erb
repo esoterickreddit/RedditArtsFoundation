@@ -39,4 +39,4 @@
 </p>
 
 
-<%= link_to 'Edit', edit_artwork_path(@artwork) %>
+<%= link_to 'Edit', :action => "edit", :controller => "artworks", :id => @artwork.id %>
