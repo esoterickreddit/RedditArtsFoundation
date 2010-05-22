@@ -1,4 +1,4 @@
-<h1>What's New</h1>
+<h1>What's Hot</h1>
 <% for artwork in @artworks %>
   <div class="entry">
     <%= link_to image_tag(artwork.image_url, :size => "225x225", :class => "image_thumb"), :controller => "artworks", :action => "show", :id => artwork.id %>

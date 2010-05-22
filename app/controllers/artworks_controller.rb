@@ -1,4 +1,5 @@
 class ArtworksController < ApplicationController
+  layout "master"
   before_filter :check_authentication, :except => [:show, :index, :search]
 
 # GET /artworks

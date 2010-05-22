@@ -1,4 +1,5 @@
 class BrowseController < ApplicationController
+  layout "master"
   before_filter :check_authentication, :except => [:show, :index, :signin_from, :signin, :hot, :new]
 
   def new

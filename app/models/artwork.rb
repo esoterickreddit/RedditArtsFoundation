@@ -1,4 +1,5 @@
 class Artwork < ActiveRecord::Base
+  belongs_to :users
   validates_presence_of :title, :image_url, :description
   validates_format_of   :image_url,
                         :with => %r{\.(gif|jpg|png)$}i,

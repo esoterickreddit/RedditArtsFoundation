@@ -1,13 +1,20 @@
 <div id="header">
-  <ul id="nav">
-    <li><%= link_to "Home", :action => "index", :controller => "browse" %></li>
-    <li><%= link_to "What's Hot", :action => "hot", :controller => "browse" %></li>
-    <li><%= link_to "New", :action => "new", :controller => "browse" %></li>
-    <li><%= link_to "Saved", :action => "saved", :controller => "browse" %></li>
-  </ul>
-  <%= render :partial => "master/login" %>
-
+  <div id="logo">
+    <%= link_to image_tag("/images/template1/logo.png"), :action => "index", :controller => "browse" %>
+  </div>
+  <div id="login">
+    <%= render :partial => "master/login" %>
+  </div>
+  <br class="clear" />
+  <div id="nav_container">
+    <ul id="nav">
+      <li><%= link_to "What's Hot", :action => "hot", :controller => "browse" %></li> |
+      <li><%= link_to "What's New", :action => "new", :controller => "browse" %></li> |
+      <li><%= link_to "Browse", :action => "index", :controller => "browse" %></li>
+    </ul>
+  </div>
   <div id="search">
     <%= render :partial => "master/search" %>
   </div>
+  <br class="clear" />
 </div>
