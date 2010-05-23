@@ -15,6 +15,13 @@ class Artwork < ActiveRecord::Base
   end
 
   def self.find_hot_artwork
-    find(:all, :order => "votes DESC")
+    find(:all, :order => "score DESC")
+  end
+  
+  def upvote
+    self.votes+=1
+    x = self.votes
+    self.score = Math.log10(x) + (x * (self.created_at.to_i - 1273017600))/45000
+    self.save
   end
 end

@@ -9,12 +9,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100521041246) do
+ActiveRecord::Schema.define(:version => 20100523021424) do
 
   create_table "artworks", :force => true do |t|
     t.string   "title",                                     :default => "Untitled Artwork"
     t.string   "image_url",                                 :default => "/images/default.jpg"
     t.text     "description"
+    t.datetime "upload_date"
     t.boolean  "for_sale",                                  :default => false
     t.boolean  "nsfw",                                      :default => false
     t.decimal  "price",       :precision => 8, :scale => 2, :default => 0.0
@@ -24,7 +25,10 @@ ActiveRecord::Schema.define(:version => 20100521041246) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
+    t.float    "score"
   end
+
+  add_index "artworks", ["score"], :name => "index_artworks_on_score"
 
   create_table "users", :force => true do |t|
     t.string   "username"

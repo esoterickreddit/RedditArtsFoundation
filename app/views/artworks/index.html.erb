@@ -10,6 +10,7 @@
     <th>Nsfw</th>
     <th>Price</th>
     <th>Quantity</th>
+    <th>Score</th>
     <th>Votes</th>
   </tr>
 
@@ -22,7 +23,9 @@
     <td><%=h artwork.nsfw %></td>
     <td><%=h artwork.price %></td>
     <td><%=h artwork.quantity %></td>
+    <td><%=h artwork.score %></td>
     <td><%=h artwork.votes %></td>
+    <td><%= link_to 'Vote', :controller => "artworks", :action => "upvote" %></td>
     <td><%= link_to 'Show', artwork %></td>
     <td><%= link_to 'Edit', edit_artwork_path(artwork) %></td>
     <td><%= link_to 'Destroy', artwork, :confirm => 'Are you sure?', :method => :delete %></td>

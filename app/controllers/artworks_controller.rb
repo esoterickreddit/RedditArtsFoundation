@@ -2,6 +2,11 @@ class ArtworksController < ApplicationController
   layout "master"
   before_filter :check_authentication, :except => [:show, :index, :search]
 
+  def upvote
+    @artwork = Artwork.find(params[:id])
+    @artwork.upvote
+  end
+
 # GET /artworks
   # GET /artworks.xml
   def index
