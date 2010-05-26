@@ -1,0 +1,6 @@
+<h1>Search</h1>
+<div id="search_results">
+  <% @artworks.each do |artwork| %>
+    <li><%= artwork.title %><br /><%= link_to image_tag(artwork.image_url, :size => "100x100"), artwork_path(artwork) %></li>
+  <% end %>
+</div>
