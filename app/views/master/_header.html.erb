@@ -9,8 +9,7 @@
   <div id="nav_container">
     <ul id="nav">
       <li><%= link_to "What's Hot", :action => "hot", :controller => "browse" %></li> |
-      <li><%= link_to "What's New", :action => "new", :controller => "browse" %></li> |
-      <li><%= link_to "Browse", :action => "index", :controller => "browse" %></li>
+      <li><%= link_to "What's New", :action => "new", :controller => "browse" %></li><% if flash[:notice] %> | <li class="flash"><%= flash[:notice] %></li><% end %>
     </ul>
   </div>
   <div id="search">

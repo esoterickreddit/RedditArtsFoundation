@@ -8,25 +8,32 @@ ul#nav li { display: inline; }
 div#content { width: 975px; margin: 0 auto; text-align: left; }
 div#container { background: #191E22 url(/images/template1/bg.gif) top repeat-x; }
 div#logo, div#nav_container { float: left; }
-div#login, div#search { float: right; }
+div#login, div#search { float: right; color: #000; }
+div#login a {color: #eee; }
+div#logout { margin-top: 27px; }
 div#footer { margin: 0; bottom: 0; }
 
 #nav_container, #search { margin: 6px 0 !important; display: block !important; }
 div#nav ul { padding: 0; margin: 0; }
 div#nav_container { display: block; }
 
-#nav a { color: #464E58; font-weight: bold; text-decoration: none; }
+#nav { font-weight: bold; }
+#nav a { text-decoration: none; color: #464E58; } 
 #nav a:active, #nav a:hover { color: #ededed; }
 #nav { color: #464e58; }
+#nav li.flash { color: #ff4500; }
 
-#frame { margin-top: 15px; }
+#frame { margin: 20px 0 0 15px; text-align: center; }
+#artwork_show { margin: 0 auto; text-align: left; }
+#search_results { text-align: left; }
 
 div#logo { margin: 17px 0 !important; display: block; }
-input#username, input#password, input#search_field { border: 1px #3b3f44 solid; background: #191E22; color: #ededed; }
+input#username, input#password, input#search_field { margin: 0; background: transparent; color: #ddd; border: 1px solid #ccc; font-size: 14px; height: 16px; padding: 5px 8px 0px 6px; vertical-align: top; }
+input#username, input#password { margin-top: 10px; }
 
 .image_thumb { margin: 0 17px 17px 0; float: left; }
 
-.pagination { text-align: center; font-weight: bold; }
+.pagination { text-align: center; font-weight: bold; margin-top: 10px; }
 
 .pagination a { color: #464E58; font-weight: bold; text-decoration: none; }
 .pagination a:active, .pagination a:hover { color: #ededed; }
@@ -36,4 +43,10 @@ input#username, input#password, input#search_field { border: 1px #3b3f44 solid; 
 
 .clear { clear: both; }
 
-h1 { padding-bottom: 10px; }
+h1 { padding-bottom: 10px; text-align: left; }
+
+.entry { height: 220px; width: 220px; display: block; float: left; margin: 20px 20px 0 0; text-align: left; background-repeat: no-repeat; }
+.entry_details { background: url(/images/template1/overlay.png) repeat; }
+.entry_details a { color: white; text-decoration: none; border-bottom: 2px solid white; }
+
+img.img_show { float: left; padding: 10px; padding-top: 0; }

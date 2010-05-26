@@ -1,8 +1,7 @@
 <h1>Editing artwork</h1>
 
 <% form_for(@artwork) do |f| %>
-  <%= f.error_messages %>
-
+<%= f.error_messages %>
   <p>
     <%= f.label :title %><br />
     <%= f.text_field :title %>
@@ -41,4 +40,4 @@
 <% end %>
 
 <%= link_to 'Show', @artwork %> |
-<%= link_to 'Back', artworks_path %>
+<%= link_to 'Back', :controller => "browse" %>

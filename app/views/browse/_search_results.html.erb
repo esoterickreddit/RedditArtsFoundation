@@ -1,5 +1,7 @@
-<ul>
-<% @artwork.each do |artwork| %>
-  <li><%= link_to artwork.title, :action => 'show', :id => artwork.id %></li>
-<% end %>
-</ul>
+<div id="search_results">
+  <ul>
+  <% @artwork.each do |artwork| %>
+    <li><%= artwork.title %><br /><%= link_to image_tag(artwork.image_url, :size => "100x100"), :action => 'show', :id => artwork.id %></li>
+  <% end %>
+  </ul>
+</div>

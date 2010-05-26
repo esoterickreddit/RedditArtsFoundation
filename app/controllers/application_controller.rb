@@ -8,6 +8,7 @@ class ApplicationController < ActionController::Base
 private
   def check_authentication
     unless session[:user]
+      session[:original_uri] = request.request_uri
       flash[:notice] = "Please signin"
       redirect_to :action => "index", :controller => "browse"
     end

@@ -5,13 +5,14 @@ class ArtworksController < ApplicationController
   def upvote
     @artwork = Artwork.find(params[:id])
     @artwork.upvote
+    redirect_to :controller => "browse", :action => "hot"
   end
 
 # GET /artworks
   # GET /artworks.xml
   def index
     #@artworks = Artwork.all
-    @artworks = Artwork.find_new_artwork.paginate :page => params[:page], :per_page => 8, :order => 'created_at DESC'
+    @artwork = Artwork.find_new_artwork.paginate :page => params[:page], :per_page => 8, :order => 'created_at DESC'
     
     respond_to do |format|
       format.html # index.html.erb

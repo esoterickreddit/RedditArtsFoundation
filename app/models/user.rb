@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   has_many :artwork
   validates_uniqueness_of :username
+
   def self.authenticate(username, password)
     user = User.find( :first,
                       :conditions => ['username = ?', username])

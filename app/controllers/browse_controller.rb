@@ -13,4 +13,8 @@ class BrowseController < ApplicationController
   def hot
     @artworks = Artwork.find_hot_artwork.paginate :page => params[:page], :per_page => 8
   end
+
+  def search
+    @artworks = Artwork.search params[:search]
+  end
 end

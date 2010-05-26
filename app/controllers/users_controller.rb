@@ -1,15 +1,24 @@
 class UsersController < ApplicationController
   layout "master"
 
-  def signin
-    session[:user] = User.authenticate(params[:username], params[:password]).id
-    redirect_to :action => "index", :controller => "browse"
-    #redirect_to :action => "index"
+  def login
+    session[:user] = nil
+    if request.post?
+      user = User.authenticate(params[:username], params[:password]).id
+      if user
+        session[:user] = user
+        uri = session[:original_url]
+        session[:original_url] = nil
+        redirect_to(uri || {:controller => "browse", :action => "index"})
+      else
+        flash.now[:notice] = "Invalid user/password combination"
+      end
+    end
   end
 
-  def signout
+  def logout
     session[:user] = nil
-    redirect_to :action => "index", :controller => "browse"
+    redirect_to :controller => "browse", :action => "index"
   end
 
   def profile
@@ -20,6 +29,6 @@ class UsersController < ApplicationController
     else
       redirect_to :action => "index", :controller => "browse"
     end
-    @artworks = @user.artwork.find(:all, :order => "created_at DESC").paginate :page => params[:page], :per_page => 8
+    @artwork = @user.artwork.find(:all, :order => "created_at DESC").paginate :page => params[:page], :per_page => 8
   end
 end

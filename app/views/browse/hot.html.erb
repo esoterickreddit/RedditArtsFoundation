@@ -1,7 +1,11 @@
 <h1>What's Hot</h1>
 <% for artwork in @artworks %>
-  <div class="entry">
-    <%= link_to image_tag(artwork.image_url, :size => "225x225", :class => "image_thumb"), :controller => "artworks", :action => "show", :id => artwork.id %>
+  <div class="entry" style="background-image: url(<%= artwork.image_url %>);">
+    <div class="entry_details"
+      <h3><%= link_to artwork.title, artwork_path(artwork) %></h3>
+      <span>Votes: <em><%= artwork.votes %></em></span><br />
+      <%= link_to "UpVizote", upvote_path(artwork.id) %>
+    </div>
   </div>
 <% end %>
 <br class="clear" />

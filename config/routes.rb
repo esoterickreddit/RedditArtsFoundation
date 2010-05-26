@@ -1,13 +1,13 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :artwork
-  map.resources :user, :has_many => :artwork
-
+  map.upvote 'artworks/:id/upvote', :controller => 'artworks', :action => 'upvote'
+  map.resources :artworks
+  # map.resources :users
+  # map.resources :users, :has_many => :artworks
   # The priority is based upon order of creation: first created -> highest priority.
-
+  #map.connect 'artworks/:id/edit(.:format)', :actioin => "edit", :controller => "artworks"
   # Sample of regular route:
   #   map.connect 'products/:id', :controller => 'catalog', :action => 'view'
   # Keep in mind you can assign values other than :controller and :action
-
   # Sample of named route:
   #   map.purchase 'products/:id/purchase', :controller => 'catalog', :action => 'purchase'
   # This route can be invoked with purchase_url(:id => product.id)
@@ -41,6 +41,6 @@ ActionController::Routing::Routes.draw do |map|
   # Install the default routes as the lowest priority.
   # Note: These default routes make all actions in every controller accessible via GET requests. You should
   # consider removing or commenting them out if you're using named routes and resources.
-  map.connect ':controller/:action/:id'
+  map.connect ':controller/:action'
   map.connect ':controller/:action/:id.:format'
 end
