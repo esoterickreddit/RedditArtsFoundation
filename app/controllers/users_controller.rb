@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   layout "master"
+  before_filter :check_authentication, :except => [:login, :logout, :profile]
 
   def login
     session[:user] = nil
@@ -22,13 +23,14 @@ class UsersController < ApplicationController
   end
 
   def profile
-    if params[:id].nil?
-      @user = User.find(session[:user])
-    elsif session[:user].nil?
-      @user = User.find(params[:id])
-    else
-      redirect_to :action => "index", :controller => "browse"
+    unless params[:id].nil?
+      if User.exists?(params[:id])
+        @user = User.find(params[:id])
+        @artwork = @user.artwork.find(:all, :order => "created_at DESC").paginate :page => params[:page], :per_page => 8
+      else
+        flash[:notice] = "Invalid User Profile"
+        redirect_to :controller => "browse", :action => "index"
+      end
     end
-    @artwork = @user.artwork.find(:all, :order => "created_at DESC").paginate :page => params[:page], :per_page => 8
   end
 end
