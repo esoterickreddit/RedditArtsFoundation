@@ -1,6 +1,6 @@
 class ArtworksController < ApplicationController
   layout "master"
-  before_filter :check_authentication, :except => [:show]
+  before_filter :check_authentication, :except => [:show, :search]
 
   def upvote
     @artwork = Artwork.find(params[:id])
