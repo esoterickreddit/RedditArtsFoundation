@@ -1,6 +1,6 @@
 class ArtworksController < ApplicationController
   layout "master"
-  before_filter :check_authentication, :except => [:show, :index, :search]
+  before_filter :check_authentication, :except => [:show]
 
   def upvote
     @artwork = Artwork.find(params[:id])
@@ -51,9 +51,10 @@ class ArtworksController < ApplicationController
   # POST /artworks.xml
   def create
     @artwork = Artwork.new(params[:artwork])
-
+    user = User.find(session[:user])
     respond_to do |format|
       if @artwork.save
+        user.artwork << @artwork
         flash[:notice] = 'Artwork was successfully created.'
         format.html { redirect_to(@artwork) }
         format.xml  { render :xml => @artwork, :status => :created, :location => @artwork }
