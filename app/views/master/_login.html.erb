@@ -5,6 +5,6 @@
   <% end %>
 <% else %>
   <div id="logout">
-    Salutations <%= User.find(session[:user]).first_name %>! <%= link_to "Logout", :controller => "users", :action => "logout" %>
+    Salutations <%= link_to User.find(session[:user]).first_name, :controller => "users", :action => "profile", :id => session[:user] %>! <%= link_to "Logout", :controller => "users", :action => "logout" %>
   </div>
 <% end %>
