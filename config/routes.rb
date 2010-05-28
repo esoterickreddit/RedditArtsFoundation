@@ -4,5 +4,5 @@ ActionController::Routing::Routes.draw do |map|
   
   map.connect ':controller/:action'
   map.connect ':controller/:action/:id.:format'
-  map.root :controller => "welcome"
+  map.root :controller => "browse"
 end
