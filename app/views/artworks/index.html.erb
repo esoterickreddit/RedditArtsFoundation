@@ -14,7 +14,7 @@
     <th>Votes</th>
   </tr>
 
-<% @artworks.each do |artwork| %>
+<% @artwork.each do |artwork| %>
   <tr>
     <td><img src="<%=h artwork.image_url %>" height='100' width='100' /></td>
     <td><%=h artwork.title %></td>
@@ -34,6 +34,6 @@
 </table>
 
 <br />
-<%= will_paginate @artworks -%>
+<%= will_paginate @artwork -%>
 <br />
 <%= link_to 'New artwork', new_artwork_path %>
