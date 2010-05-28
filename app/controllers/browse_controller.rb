@@ -7,7 +7,7 @@ class BrowseController < ApplicationController
   end
 
   def index
-    redirect_to :action => "new"
+    redirect_to :action => "hot"
   end
 
   def hot
