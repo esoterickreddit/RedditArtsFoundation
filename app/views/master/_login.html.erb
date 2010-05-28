@@ -2,6 +2,7 @@
   <% form_for :user, :url => { :controller => "users", :action => "login" }, :html => { :method => :post } do %>
     <%= text_field_tag "username", "username" %><br />
     <%= password_field_tag "password", "password" %><br />
+    <%= submit_tag "Login" %>
   <% end %>
 <% else %>
   <div id="logout">
