@@ -1,8 +1,9 @@
 class ArtworksController < ApplicationController
   layout "master"
+  skip_before_filter :check_authorization, :check_authentication
   before_filter :check_authentication,
                 :check_authorization,
-                :except => [:show, :search]
+                :except => [:show]
 
   def upvote
     @artwork = Artwork.find(params[:id])
@@ -47,7 +48,7 @@ class ArtworksController < ApplicationController
   # GET /artworks/1/edit
   def edit
     @artwork = Artwork.find(params[:id])
-    logger.warn ("user_id:" + @artwork.user_id.to_s + "User:" + User.find(@artwork.user_id).first_name)
+    logger.warn("user_id:" + @artwork.user_id.to_s + "User:" + User.find(@artwork.user_id).first_name)
   end
 
   # POST /artworks
