@@ -1,6 +1,8 @@
 class ArtworksController < ApplicationController
   layout "master"
-  before_filter :check_authentication, :except => [:show, :search]
+  before_filter :check_authentication,
+                :check_authorization,
+                :except => [:show, :search]
 
   def upvote
     @artwork = Artwork.find(params[:id])
@@ -45,6 +47,7 @@ class ArtworksController < ApplicationController
   # GET /artworks/1/edit
   def edit
     @artwork = Artwork.find(params[:id])
+    logger.warn ("user_id:" + @artwork.user_id.to_s + "User:" + User.find(@artwork.user_id).first_name)
   end
 
   # POST /artworks
@@ -92,9 +95,5 @@ class ArtworksController < ApplicationController
       format.html { redirect_to(artworks_url) }
       format.xml  { head :ok }
     end
-  end
-  
-  def search
-    @artwork = Artwork.search params[:search]
   end
 end
