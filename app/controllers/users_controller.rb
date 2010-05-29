@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
   layout "master"
-  before_filter :check_authentication, :except => [:login, :logout, :profile]
+  before_filter :check_authentication,
+                :check_authorization,
+                :except => [:login, :logout, :profile]
 
   def login
     session[:user] = nil
