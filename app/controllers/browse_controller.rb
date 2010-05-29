@@ -1,6 +1,9 @@
 class BrowseController < ApplicationController
   layout "master"
-  before_filter :check_authentication, :except => [:new, :index, :hot, :search]
+  skip_before_filter :check_authorization, :check_authentication
+  before_filter :check_authentication,
+                :check_authorization,
+                :except => [:new, :index, :hot, :search]
 
   def new
     @artworks = Artwork.find_new_artwork.paginate :page => params[:page], :per_page => 8
