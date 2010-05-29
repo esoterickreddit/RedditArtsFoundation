@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100526024649) do
+ActiveRecord::Schema.define(:version => 20100529030841) do
 
   create_table "artworks", :force => true do |t|
     t.string   "title",                                     :default => "Untitled Artwork"
@@ -28,6 +28,26 @@ ActiveRecord::Schema.define(:version => 20100526024649) do
   end
 
   add_index "artworks", ["score"], :name => "index_artworks_on_score"
+
+  create_table "rights", :force => true do |t|
+    t.string "name"
+    t.string "controller"
+    t.string "action"
+  end
+
+  create_table "rights_roles", :id => false, :force => true do |t|
+    t.integer "right_id"
+    t.integer "role_id"
+  end
+
+  create_table "roles", :force => true do |t|
+    t.string "name"
+  end
+
+  create_table "roles_users", :id => false, :force => true do |t|
+    t.integer "role_id"
+    t.integer "user_id"
+  end
 
   create_table "sessions", :force => true do |t|
     t.string   "session_id", :null => false
