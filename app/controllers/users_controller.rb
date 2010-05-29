@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   layout "master"
+  skip_before_filter :check_authorization, :check_authentication
   before_filter :check_authentication,
                 :check_authorization,
                 :except => [:login, :logout, :profile]
