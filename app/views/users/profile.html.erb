@@ -1,6 +1,8 @@
 <h2><%=h @user.username %></h2>
 <h3><%=h @user.first_name %> <%=h @user.last_name%></h3>
 
+<h3><%= link_to "Create New Artwork", :controller => "artworks", :action => "new" %></h3>
+
 <h3>Recent Submissions</h3>
 <% @artwork.each do |artwork| %>
   <%= link_to image_tag(artwork.image_url, :height => "100px", :width => "100px"), :action => "show", :controller => "artworks", :id => artwork.id %>
