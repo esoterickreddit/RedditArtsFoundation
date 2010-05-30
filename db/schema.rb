@@ -15,6 +15,7 @@ ActiveRecord::Schema.define(:version => 20100529030841) do
     t.string   "title",                                     :default => "Untitled Artwork"
     t.string   "image_url",                                 :default => "/images/default.jpg"
     t.text     "description"
+    t.datetime "upload_date"
     t.boolean  "for_sale",                                  :default => false
     t.boolean  "nsfw",                                      :default => false
     t.decimal  "price",       :precision => 8, :scale => 2, :default => 0.0
@@ -50,7 +51,7 @@ ActiveRecord::Schema.define(:version => 20100529030841) do
   end
 
   create_table "sessions", :force => true do |t|
-    t.string   "session_id", :null => false
+    t.string   "session_id", :default => "", :null => false
     t.text     "data"
     t.datetime "created_at"
     t.datetime "updated_at"

@@ -49,6 +49,12 @@ class ArtworksController < ApplicationController
   def edit
     @artwork = Artwork.find(params[:id])
     logger.warn("user_id:" + @artwork.user_id.to_s + "User:" + User.find(@artwork.user_id).first_name)
+    admin = User.find(session[:user]).roles.exists?(:name => "Administrator")
+    logger.debug("Admin: " + admin.to_s)
+    if session[:user] != @artwork.user_id and !admin
+      flash[:notice] = "You can't edit an artwork you did not create."
+      redirect_to :controller => "browse", :action => "hot"
+    end
   end
 
   # POST /artworks
@@ -73,17 +79,24 @@ class ArtworksController < ApplicationController
   # PUT /artworks/1.xml
   def update
     @artwork = Artwork.find(params[:id])
-
-    respond_to do |format|
-      if @artwork.update_attributes(params[:artwork])
-        flash[:notice] = 'Artwork was successfully updated.'
-        format.html { redirect_to(@artwork) }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @artwork.errors, :status => :unprocessable_entity }
+    admin = User.find(session[:user]).roles.exists?(:name => "Administrator")
+    if session[:user] != @artwork.user_id and !admin
+      flash[:notice] = "You can't update an artwork you did not create."
+      redirect_to :controller => "browse", :action => "hot"
+    else
+      respond_to do |format|
+        if @artwork.update_attributes(params[:artwork])
+          flash[:notice] = 'Artwork was successfully updated.'
+          format.html { redirect_to(@artwork) }
+          format.xml  { head :ok }
+        else
+          format.html { render :action => "edit" }
+          format.xml  { render :xml => @artwork.errors, :status => :unprocessable_entity }
+        end
       end
     end
+
+    
   end
 
   # DELETE /artworks/1

@@ -1,3 +1,5 @@
+require 'digest/sha2'
+
 class User < ActiveRecord::Base
   has_many :artwork
   has_and_belongs_to_many :roles
